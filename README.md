@@ -24,7 +24,7 @@ A JavaScript 2 dimensional array module
 
 ### API
 - <code>size()</code>
-- <code>getAt(xIndex, yIndex)</code>
+- <code>getAt(rowIndex, colIndex)</code>
 - <code>push(val)</code>
 - <code>pop()</code>
 - <code>find(function(){ return true; })</code>
