@@ -13,7 +13,8 @@ A JavaScript 2 dimensional array module
 <code>
   var matrix = new Matrix(2, 2, [{}, {}, {}, {}]);
 </code>
-resulting in
+
+### Internal Representation
 <code>
   [ 
     [ {}, {} ], 
