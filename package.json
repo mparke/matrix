@@ -1,0 +1,13 @@
+{
+  "name": "matrix",
+  "description": "a JavaScript 2 dimensional array module",
+  "version": "0.0.1",
+  "devDependencies": {
+    "karma": "~0.8",
+    "uglify-js": "~2.3.6"
+  },
+  "scripts": {
+    "test": "./node_modules/.bin/karma start --single-run --browsers PhantomJS",
+    "minify": "./node_modules/.bin/uglifyjs matrix.js --output matrix.min.js --mangle"
+  }
+}
