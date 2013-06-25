@@ -1,8 +1,10 @@
+<pre>
    _    _       _    _____   ____    _  __   __
   / \  / \     / \  |_   _| | _  |  | | \ \_/ /
  /   \/   \   / _ \   | |   | __ \  | |  | _ | 
 /__/\__/\__\ /_/ \_\  |_|   |_| \_\ |_| /_/ \_\
-    
+</pre>
+
 [![Build Status](https://travis-ci.org/mparke/matrix.png)](https://travis-ci.org/mparke/matrix)
 
 A JavaScript 2 dimensional array module
