@@ -40,7 +40,7 @@
     }
 
     function getAt(x, y){
-      return mx[y][x];
+      return mx[x][y];
     }
 
     function pop(){
