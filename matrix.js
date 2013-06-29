@@ -129,6 +129,7 @@
       this.pop = pop;
       this.find = find;
       this.each = each;
+      this.mx = mx;
       return this;
     };
   })();
