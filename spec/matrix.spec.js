@@ -31,7 +31,7 @@ describe('Matrix', function(){
     var mx = this.matrix;
 
     // verify public attributes
-    expect(mx.mx).toBeUndefined();
+    expect(mx.mx).toBeDefined();
     expect(mx.xSize).toBe(40);
     expect(mx.ySize).toBe(60);
 
@@ -48,6 +48,12 @@ describe('Matrix', function(){
     expect(typeof mx.find).toBe('function');
     expect(mx.each).toBeDefined();
     expect(typeof mx.each).toBe('function');
+  });
+
+  it('should return the matrix', function(){
+    var mx = this.matrix;
+    expect(mx.data()).toBeDefined();
+    expect(Array.isArray(mx.data())).toBe(true);
   });
 
   it('should be able to return a size', function(){

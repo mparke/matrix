@@ -3,17 +3,18 @@
   var root = this;
   
   var Matrix = function(xSize, ySize, data){
+    this.mx = [];
     this.xSize = xSize;
     this.ySize = ySize;
     this.initialize(data);
   };
   
   var asMatrix = (function(){
-    var mx = [];
 
     function initialize(data){
       var x = this.xSize, 
-        y = this.ySize;
+        y = this.ySize,
+        mx = this.mx;
 
       for(var i = 0; i < y; i++){
         if(data.length > 0){
@@ -29,7 +30,8 @@
     }
 
     function size(){
-      var yLen = mx.length,
+      var mx = this.mx,
+        yLen = mx.length,
         xLen = 0;
 
       for(var i = 0; i < yLen; i++){
@@ -40,11 +42,12 @@
     }
 
     function getAt(x, y){
-      return mx[x][y];
+      return this.mx[x][y];
     }
 
     function pop(){
-      var yLen = mx.length,
+      var mx = this.mx,
+        yLen = mx.length,
         removed,
         row;
 
@@ -68,7 +71,8 @@
     }
 
     function push(val){
-      var yLen = mx.length,
+      var mx = this.mx,
+        yLen = mx.length,
         row, xLen;
 
       if(yLen > 0){
@@ -88,7 +92,8 @@
     }
 
     function find(comparator){
-      var yLen = mx.length,
+      var mx = this.mx,
+        yLen = mx.length,
         result = -1,
         row, xLen, current;
 
@@ -108,7 +113,8 @@
     }
 
     function each(fn){
-      var yLen = mx.length,
+      var mx = this.mx,
+        yLen = mx.length,
         row, xLen;
 
       for(var i = 0; i < yLen; i++){
@@ -121,6 +127,10 @@
       }
     }
 
+    function data(){
+      return this.mx;
+    }
+
     return function(){
       this.getAt = getAt;
       this.size = size;
@@ -129,7 +139,7 @@
       this.pop = pop;
       this.find = find;
       this.each = each;
-      this.mx = mx;
+      this.data = data;
       return this;
     };
   })();
