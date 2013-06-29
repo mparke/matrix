@@ -9,5 +9,9 @@
   "scripts": {
     "test": "./node_modules/.bin/karma start --single-run --browsers PhantomJS",
     "minify": "./node_modules/.bin/uglifyjs matrix.js --output matrix.min.js --mangle"
+  },
+  "repository" : { 
+    "type": "git",
+    "url": "http://github.com/mparke/matrix.git"
   }
 }
