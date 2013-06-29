@@ -22,12 +22,16 @@ describe('Matrix', function(){
       y += height;
     }
 
+    this.testdata = data;
+    this.emptyMatrix = new Matrix();
     this.matrix = new Matrix(40, 60, data);
   });
 
   it('should be initialized with properties and methods', function(){
     var mx = this.matrix;
 
+    expect(this.emptyMatrix.mx).toBeDefined();
+    expect(this.emptyMatrix.size()).toEqual(0);
     // verify public attributes
     expect(mx.mx).toBeDefined();
     expect(mx.xSize).toBe(40);
@@ -38,6 +42,8 @@ describe('Matrix', function(){
     expect(typeof mx.getAt).toBe('function');
     expect(mx.size).toBeDefined();
     expect(typeof mx.size).toBe('function');
+    expect(mx.reset).toBeDefined();
+    expect(typeof mx.reset).toBe('function');
     expect(mx.push).toBeDefined();
     expect(typeof mx.push).toBe('function');
     expect(mx.pop).toBeDefined();
@@ -51,12 +57,20 @@ describe('Matrix', function(){
   it('should return the matrix', function(){
     var mx = this.matrix;
     expect(mx.data()).toBeDefined();
-    expect(Array.isArray(mx.data())).toBe(true);
+    expect(Array.isArray(mx.data())).toEqual(true);
   });
 
   it('should be able to return a size', function(){
     var mx = this.matrix;
-    expect(mx.size()).toBe(2400);
+    expect(mx.size()).toEqual(2400);
+  });
+
+  it('should be able to reset', function(){
+    this.matrix.reset();
+    expect(this.matrix.size()).toEqual(0);
+
+    this.emptyMatrix.reset(this.testdata);
+    expect(this.emptyMatrix.size()).toEqual(2400)
   });
 
   it('should be able to get a value at an index', function(){

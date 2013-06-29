@@ -4,9 +4,12 @@
   
   var Matrix = function(xSize, ySize, data){
     this.mx = [];
-    this.xSize = xSize;
-    this.ySize = ySize;
-    this.initialize(data);
+    this.xSize = xSize || 0;
+    this.ySize = ySize || 0;
+
+    if(Array.isArray(data)){
+      this.initialize(data);
+    }
   };
   
   var asMatrix = (function(){
@@ -27,6 +30,13 @@
           }
         }
       }      
+    }
+
+    function reset(data){
+      this.mx.splice(0, this.mx.length - 1);
+      if(Array.isArray(data)){
+        this.initialize(data);
+      }
     }
 
     function size(){
@@ -135,6 +145,7 @@
       this.getAt = getAt;
       this.size = size;
       this.initialize = initialize;
+      this.reset = reset;
       this.push = push;
       this.pop = pop;
       this.find = find;
