@@ -4,24 +4,22 @@ describe('Matrix', function(){
   beforeEach(function(){
     var width = 20,
       height = 20,
-      mapHeight = 800, 
-      mapWidth = 1200,
-      i = 0,
-      j = 0,
+      totalWidth = 800, 
+      totalHeight = 1200,
+      x = 0,
+      y = 0,
       data = [];
 
-    while(i < mapHeight){
-      
-      while(j < mapWidth){
+    while(y < totalHeight){
+      while(x < totalWidth){
         data.push({
-          x: j,
-          y: i
+          x: x,
+          y: y
         });
-        j += width;
+        x += width;
       }
-
-      j = 0;
-      i += height;
+      x = 0;
+      y += height;
     }
 
     this.matrix = new Matrix(40, 60, data);
@@ -61,27 +59,28 @@ describe('Matrix', function(){
     expect(mx.size()).toBe(2400);
   });
 
-  it('should be able to get a value at an x, y index', function(){
+  it('should be able to get a value at an index', function(){
     var mx = this.matrix;
+    
     expect(mx.getAt(0, 0)).toBeDefined();
     expect(mx.getAt(0, 0).x).toBe(0);
     expect(mx.getAt(0, 0).y).toBe(0);
 
     expect(mx.getAt(1, 0)).toBeDefined();
-    expect(mx.getAt(1, 0).x).toBe(20);
-    expect(mx.getAt(1, 0).y).toBe(0);
+    expect(mx.getAt(1, 0).x).toBe(0);
+    expect(mx.getAt(1, 0).y).toBe(20);
 
-    expect(mx.getAt(39, 0)).toBeDefined();
-    expect(mx.getAt(39, 0).x).toBe(780);
-    expect(mx.getAt(39, 0).y).toBe(0);
+    expect(mx.getAt(59, 0)).toBeDefined();
+    expect(mx.getAt(59, 0).x).toBe(0);
+    expect(mx.getAt(59, 0).y).toBe(1180);
 
-    expect(mx.getAt(0, 59)).toBeDefined();
-    expect(mx.getAt(0, 59).x).toBe(400);
-    expect(mx.getAt(0, 59).y).toBe(780);
+    expect(mx.getAt(0, 39)).toBeDefined();
+    expect(mx.getAt(0, 39).x).toBe(780);
+    expect(mx.getAt(0, 39).y).toBe(0);
 
-    expect(mx.getAt(39, 59)).toBeDefined();
-    expect(mx.getAt(39, 59).x).toBe(1180);
-    expect(mx.getAt(39, 59).y).toBe(780);
+    expect(mx.getAt(59, 39)).toBeDefined();
+    expect(mx.getAt(59, 39).x).toBe(780);
+    expect(mx.getAt(59, 39).y).toBe(1180);
   });
 
   it('should be able to pop a value', function(){
@@ -90,22 +89,22 @@ describe('Matrix', function(){
     var removed = mx.pop();
     expect(mx.size()).toBe(2399);
     expect(removed).toBeDefined();
-    expect(removed.x).toBe(1180);
-    expect(removed.y).toBe(780);
+    expect(removed.x).toBe(780);
+    expect(removed.y).toBe(1180);
 
-    expect(mx.getAt(38, 59)).toBeDefined();
-    expect(mx.getAt(38, 59).x).toBe(1160);
-    expect(mx.getAt(38, 59).y).toBe(780);
+    expect(mx.getAt(59, 38)).toBeDefined();
+    expect(mx.getAt(59, 38).x).toBe(760);
+    expect(mx.getAt(59, 38).y).toBe(1180);
 
     removed = mx.pop();
     expect(mx.size()).toBe(2398);
     expect(removed).toBeDefined();
-    expect(removed.x).toBe(1160);
-    expect(removed.y).toBe(780);
+    expect(removed.x).toBe(760);
+    expect(removed.y).toBe(1180);
 
-    expect(mx.getAt(37, 59)).toBeDefined();
-    expect(mx.getAt(37, 59).x).toBe(1140);
-    expect(mx.getAt(37, 59).y).toBe(780);
+    expect(mx.getAt(59, 37)).toBeDefined();
+    expect(mx.getAt(59, 37).x).toBe(740);
+    expect(mx.getAt(59, 37).y).toBe(1180);
   });
 
   it('should be able to push a value', function(){
@@ -114,29 +113,29 @@ describe('Matrix', function(){
     // should create a new row
     mx.push({x:200, y:977, test:'test', empty: null})
     expect(mx.size()).toBe(2401);
-    expect(mx.getAt(0, 60)).toBeDefined();
-    expect(mx.getAt(0, 60).x).toBe(200);
-    expect(mx.getAt(0, 60).y).toBe(977);
-    expect(mx.getAt(0, 60).test).toBe('test');
-    expect(mx.getAt(0, 60).empty).toBe(null);
+    expect(mx.getAt(60, 0)).toBeDefined();
+    expect(mx.getAt(60, 0).x).toBe(200);
+    expect(mx.getAt(60, 0).y).toBe(977);
+    expect(mx.getAt(60, 0).test).toBe('test');
+    expect(mx.getAt(60, 0).empty).toBe(null);
 
     // should add to the new row
     mx.push({one:1});
     expect(mx.size()).toBe(2402);
-    expect(mx.getAt(1, 60)).toBeDefined();
-    expect(mx.getAt(1, 60).one).toBe(1);
+    expect(mx.getAt(60, 1)).toBeDefined();
+    expect(mx.getAt(60, 1).one).toBe(1);
 
     // should add to the new row
     mx.push(null);
     expect(mx.size()).toBe(2403);
-    expect(mx.getAt(2, 60)).toBeDefined();
-    expect(mx.getAt(2, 60)).toBeNull();
+    expect(mx.getAt(60, 2)).toBeDefined();
+    expect(mx.getAt(60, 2)).toBeNull();
 
     // should add to the new row
     mx.push({something:'else'});
     expect(mx.size()).toBe(2404);
-    expect(mx.getAt(3, 60)).toBeDefined();
-    expect(mx.getAt(3, 60).something).toBe('else');
+    expect(mx.getAt(60, 3)).toBeDefined();
+    expect(mx.getAt(60, 3).something).toBe('else');
   });
 
   it('should be able to find an object using a comparator function', function(){

@@ -8,7 +8,7 @@ basePath = '';
 files = [
   JASMINE,
   JASMINE_ADAPTER,
-  'matrix.min.js',
+  'matrix.js',
   'spec/*.spec.js'
 ];
 
@@ -40,7 +40,14 @@ autoWatch = false;
 // - Safari (only Mac)
 // - PhantomJS
 // - IE (only Windows)
-browsers = ['Chrome', 'ChromeCanary', 'Firefox', 'Opera', 'Safari', 'PhantomJS'];
+browsers = [
+  'Chrome',
+  'ChromeCanary', 
+  'Firefox', 
+  'Opera', 
+  'Safari', 
+  'PhantomJS'
+];
 
 // If browser does not capture in given timeout [ms], kill it
 captureTimeout = 60000;
