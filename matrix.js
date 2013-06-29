@@ -1,4 +1,4 @@
-// 
+// Matrix: Copyright (c) 2013 Matthew Parke mparke78@gmail.com
 (function(){
   var root = this;
   
