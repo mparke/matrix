@@ -27,5 +27,6 @@ A JavaScript 2 dimensional array module
 - <code>getAt(rowIndex, colIndex)</code>
 - <code>push(val)</code>
 - <code>pop()</code>
+- <code>reset() //optional param [] to reset with new data</code>
 - <code>find(function(val){ return true; })</code>
 - <code>each(function(val){})</code>
