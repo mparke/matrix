@@ -11,8 +11,9 @@ A JavaScript 2 dimensional array module
 ### Instantiation
 <pre>
    <code>
+     // Matrix(rowSize, data)
      // create a 2 x 2 matrix
-     var matrix = new Matrix(2, 2, [1, 2, 3, 4]);
+     var matrix = new Matrix(2, [1, 2, 3, 4]);
      
      // internal representation
      [
