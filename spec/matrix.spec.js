@@ -8,23 +8,22 @@ describe('Matrix', function(){
       totalHeight = 1200,
       x = 0,
       y = 0,
-      data = [];
+      data = [],
+      resetData = [];
 
     while(y < totalHeight){
       while(x < totalWidth){
-        data.push({
-          x: x,
-          y: y
-        });
+        data.push({ x: x, y: y });
+        resetData.push({ x: x, y: y });
         x += width;
       }
       x = 0;
       y += height;
     }
 
-    this.testdata = data;
-    this.emptyMatrix = new Matrix();
-    this.matrix = new Matrix(40, 60, data);
+    this.resetData = resetData;
+    this.emptyMatrix = new Matrix(40);
+    this.matrix = new Matrix(40, data);
   });
 
   it('should be initialized with properties and methods', function(){
@@ -35,7 +34,6 @@ describe('Matrix', function(){
     // verify public attributes
     expect(mx.mx).toBeDefined();
     expect(mx.xSize).toBe(40);
-    expect(mx.ySize).toBe(60);
 
     // verify api
     expect(mx.getAt).toBeDefined();
@@ -66,11 +64,14 @@ describe('Matrix', function(){
   });
 
   it('should be able to reset', function(){
-    this.matrix.reset();
-    expect(this.matrix.size()).toEqual(0);
+    var mx = this.matrix,
+      emx = this.emptyMatrix;
 
-    this.emptyMatrix.reset(this.testdata);
-    expect(this.emptyMatrix.size()).toEqual(2400)
+    mx.reset();
+    expect(mx.size()).toEqual(0);
+    
+    emx.reset(this.resetData);
+    expect(emx.size()).toEqual(2400);
   });
 
   it('should be able to get a value at an index', function(){

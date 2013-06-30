@@ -2,38 +2,43 @@
 (function(){
   var root = this;
   
-  var Matrix = function(xSize, ySize, data){
+  var Matrix = function(xSize, data){
     this.mx = [];
-    this.xSize = xSize || 0;
-    this.ySize = ySize || 0;
-
-    if(Array.isArray(data)){
-      this.initialize(data);
+    
+    if(typeof xSize === 'number' && xSize > 0){
+      this.xSize = xSize;
+      if(Array.isArray(data)){
+        this.initialize(data);
+      }
+    }else{
+      throw new Error('Row size must be greater than 0.')
     }
   };
   
   var asMatrix = (function(){
 
     function initialize(data){
-      var x = this.xSize, 
-        y = this.ySize,
-        mx = this.mx;
-
-      for(var i = 0; i < y; i++){
-        if(data.length > 0){
-          mx[i] = [];
-  
-          for(var j = 0; j < x; j++){
-            if(data.length > 0){
-              mx[i][j] = data.shift();
-            }
+      var x = this.xSize,
+        mx = this.mx,
+        total = data.length,
+        i = 0,
+        j = 0;
+      
+      while(data.length > 0){
+        mx[i] = [];
+        while(j < x){
+          if(data.length > 0){
+            mx[i].push(data.shift());
           }
+          ++j;
         }
+        j = 0;
+        ++i;
       }      
     }
 
     function reset(data){
-      this.mx.splice(0, this.mx.length - 1);
+      this.mx.splice(0, this.mx.length);
       if(Array.isArray(data)){
         this.initialize(data);
       }

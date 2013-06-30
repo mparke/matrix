@@ -41,12 +41,12 @@ autoWatch = false;
 // - PhantomJS
 // - IE (only Windows)
 browsers = [
-  'Chrome',
-  'ChromeCanary', 
-  'Firefox', 
-  'Opera', 
-  'Safari', 
-  'PhantomJS'
+  'Chrome'
+  // 'ChromeCanary', 
+  // 'Firefox', 
+  // 'Opera', 
+  // 'Safari', 
+  // 'PhantomJS'
 ];
 
 // If browser does not capture in given timeout [ms], kill it
