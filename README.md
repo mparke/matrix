@@ -5,7 +5,7 @@
 /__/\__/\__\ /_/ \_\  |_|   |_| \_\ |_| /_/ \_\
 </pre>
 
-A JavaScript 2 dimensional array module
+a JavaScript 2 dimensional array module
 [![Build Status](https://travis-ci.org/mparke/matrix.png?branch=master)](https://travis-ci.org/mparke/matrix)
 
 ### Instantiation
